@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Convert Excel to HTML Table using JavaScript</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+    <style>
+
+        .head{
+            background-color: lightblue;
+        }
+
+
+        .foot{
+            background-color: lightblue;
+        }
+
+
+        table,td{
+            border-collapse: collapse;
+            border: 1px solid black;
+
+        }
+
+
+        table{
+            font-size: 14px;
+            margin-right: 0px;
+            width: 96%;
+            text-align: center;
+            margin: auto;
+        }
+
+        td{
+
+    padding: 3px;
+
+
+        }
+
+        .headerr{
+            align-items: flex-end;
+            margin-left: 15px;
+            margin-bottom: 10px;
+        }
+
+
+        .blank{
+
+            width: 80px;
+        }
+
+
+
+        .m{
+            
+            width: 400px;
+            margin: 0px 8px;
+            margin-left: 12px;
+            
+        }
+
+        .m h2{
+            margin-bottom:10px;
+        }
+
+        .m p{
+            border: 1px solid black;
+            font-size: 12px;
+            padding: 5px;
+        }
+
+        .r{
+            background-color: antiquewhite;
+            height: 142px;
+            width: 137px;
+            border: 1px solid black;
+        }
+
+        .l{
+
+            display: flex;
+            flex-direction: column;
+            font-size: 12px;
+            width: 140px;
+            margin-bottom: 10px;
+
+        }
+
+        .headerr{
+            display: flex;
+        }
+
+        .l span{
+            border: 1px solid black;
+            margin: 3px 0px;
+            min-height: 20px;
+            color: black;
+
+            width: 145px;
+        }
+
+
+        .mwide{
+
+            width: 150px;
+
+        }
+
+        .mnwide{
+            width: 100px;
+        }
+
+
+        .card{
+            text-align: center;
+            width: 730px;
+            margin: auto;
+            border: 2px solid black;
+            margin-bottom:50px;
+           
+        }
+
+
+        .head,.foot{
+
+            background-color: blue;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 10px 0;
+            color: white;
+        }
+
+
+        .head{
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+
+        @media print {
+            #none{
+                 display: none !important;
+             }
+     
+            
+     
+             .break {
+                 page-break-after: always;
+             }
+     
+             
+         }
+
+         #ref{
+            font-size: 8px;
+            color: black !important;
+         }
+     
+         #id{
+            text-align: left !important;
+            padding: 3px 5px;
+         }
+
+
+
+    </style>
+
+
+</head>
+<body>
+    <div class="container" id="none">
+    	<h2 class="text-center mt-4 mb-4" >Convert Excel to HTML Table using JavaScript</h2>
+    	<div class="">
+    		<div class="card-header"><b>Select Excel File</b></div>
+    		<div class="card-body">
+    			
+                <input type="file" id="excel_file" />
+
+    		</div>
+    	</div>
+
+      
+        
+    </div>
+
+    <div id="excel_data" class=""></div>
+</body>
+</html>
+
+<script>
+
+const excel_file = document.getElementById('excel_file');
+
+excel_file.addEventListener('change', (event) => {
+
+    if(!['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].includes(event.target.files[0].type))
+    {
+        document.getElementById('excel_data').innerHTML = '<div class="alert alert-danger">Only .xlsx or .xls file format are allowed</div>';
+
+        excel_file.value = '';
+
+        return false;
+    }
+
+    var reader = new FileReader();
+
+    reader.readAsArrayBuffer(event.target.files[0]);
+
+    reader.onload = function(event){
+
+        var data = new Uint8Array(reader.result);
+
+        var work_book = XLSX.read(data, {type:'array'});
+
+        var sheet_name = work_book.SheetNames;
+
+        var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
+
+        if(sheet_data.length > 0)
+        {
+            var table_output = '';
+
+            for(var row = 1; row < sheet_data.length; row++)
+            {
+
+
+                if(row%2!=0){
+
+                table_output+='<div class="card"><div class="head">ALERT B042 Bangladesh (Flash Flooding in North East Part of Bangladesh)</div><div class="main"><div class="headerr"><div class="l"><span id="ref"> NGOAB Ref. No. 03.07.2666.665.68.236.21-1236   </span><span id="id" >তারিখ :</span></div><div class="m"><h2>Participant Card</h2><p style="margin-bottom: 0px"> নগদ অর্থ - ৪৫০০ টাকা, গোসলের সাবান (১২৫ গ্রাম) - ১০টি, কাপড় কাচার সাবান (১৩০ গ্রাম) - ১০টি, ‍স্যানিটারি ন্যাপকিন (৮ পিস) - ১ প্যাকেট, ঢাকনা ও ট্যাপসহ বালতি (২০ লি.) - ১টি, মাস্ক - ৫০ পিস, প্লাস্টিক মগ (১.৫ লি.) - ১টি ও <b>সচেতনতামূলক প্রচারপত্র </b></p></div> <div class="r"><img src="img/'+
+                    row+'.jpg.jpg" alt="" width="100%" height="100%"></div></div><table><tr><td>অংশগ্রহনকারীর নম্বর</td><td class="blank"></td><td colspan="">অংশগ্রহনকারীর নাম</td><td colspan="3" class="blank">'+sheet_data[row][17]+'</td></tr><tr><td>পিতা / স্বামীর নাম</td><td class="blank">'+sheet_data[row][21]+'</td><td colspan="">মোবাইল নম্বর</td><td colspan="3" class="blank" >'+sheet_data[row][23]+'</td></tr><tr><td rowspan="2">অংশগ্রহনকারীর ঠিকানা</td><td>গ্রাম</td><td>'+sheet_data[row][16]+'</td><td colspan="">ওয়ার্ড</td><td class="blank" colspan="2">'+sheet_data[row][15]+'</td></tr><tr><td class="mwide">ইউনিয়ন :</td><td>'+sheet_data[row][14]+'</td><td colspan="">উপজেলা :</td><td colspan="2">'+sheet_data[row][13]+'</td></tr><tr><td colspan="2">জাতীয় পরিচয়পত্র / জন্ম সনদ নম্বর :</td><td colspan="4">'+sheet_data[row][20]+'</td></tr><tr><td>কার্ড বিতরণকারীর নাম</td><td></td><td>পদবী</td><td class="blank mnwide"></td><td>স্বাক্ষর</td><td class="blank mnwide"></td></tr></table></div><div class="foot">যে কোনো পরামর্শ/ অভিযোগ: ০১৭৭৭-৭৭৩৭০১, ০৮০০৯০০১০০০০ (টোল ফ্রি নম্বর)</div></div>'
+       
+                }else{
+
+                    table_output+='<div class="card break"><div class="head">ALERT B042 Bangladesh (Flash Flooding in North East Part of Bangladesh)</div><div class="main"><div class="headerr"><div class="l"><span id="ref"> NGOAB Ref. No. 03.07.2666.665.68.236.21-1236   </span><span id="id" >তারিখ :</span></div><div class="m"><h2>Participant Card</h2><p style="margin-bottom: 0px"> নগদ অর্থ - ৪৫০০ টাকা, গোসলের সাবান (১২৫ গ্রাম) - ১০টি, কাপড় কাচার সাবান (১৩০ গ্রাম) - ১০টি, ‍স্যানিটারি ন্যাপকিন (৮ পিস) - ১ প্যাকেট, ঢাকনা ও ট্যাপসহ বালতি (২০ লি.) - ১টি, মাস্ক - ৫০ পিস, প্লাস্টিক মগ (১.৫ লি.) - ১টি ও <b>সচেতনতামূলক প্রচারপত্র </b></p></div> <div class="r"><img src="img/'+
+                        row+'.jpg.jpg" alt="" width="100%" height="100%"></div></div><table><tr><td>অংশগ্রহনকারীর নম্বর</td><td class="blank"></td><td colspan="">অংশগ্রহনকারীর নাম</td><td colspan="3" class="blank">'+sheet_data[row][17]+'</td></tr><tr><td>পিতা / স্বামীর নাম</td><td class="blank">'+sheet_data[row][21]+'</td><td colspan="">মোবাইল নম্বর</td><td colspan="3" class="blank" >'+sheet_data[row][23]+'</td></tr><tr><td rowspan="2">অংশগ্রহনকারীর ঠিকানা</td><td>গ্রাম</td><td>'+sheet_data[row][16]+'</td><td colspan="">ওয়ার্ড</td><td class="blank" colspan="2">'+sheet_data[row][15]+'</td></tr><tr><td class="mwide">ইউনিয়ন :</td><td>'+sheet_data[row][14]+'</td><td colspan="">উপজেলা :</td><td colspan="2">'+sheet_data[row][13]+'</td></tr><tr><td colspan="2">জাতীয় পরিচয়পত্র / জন্ম সনদ নম্বর :</td><td colspan="4">'+sheet_data[row][20]+'</td></tr><tr><td>কার্ড বিতরণকারীর নাম</td><td></td><td>পদবী</td><td class="blank mnwide"></td><td>স্বাক্ষর</td><td class="blank mnwide"></td></tr></table></div><div class="foot">যে কোনো পরামর্শ/ অভিযোগ: ০১৭৭৭-৭৭৩৭০১, ০৮০০৯০০১০০০০ (টোল ফ্রি নম্বর)</div></div>'
+
+                }
+
+            }
+
+           
+
+            document.getElementById('excel_data').innerHTML = table_output;
+        }
+
+        excel_file.value = '';
+
+    }
+
+});
+
+</script>
