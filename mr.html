@@ -21,7 +21,7 @@
         }
 
         td{
-            font-size: 10px;
+            font-size: 11px;
             padding-left: 1px;
             padding-right: 1px;
             text-align: center;
@@ -144,6 +144,12 @@ h4{
 }
 
 
+#name{
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
       
    @media print 
         {
@@ -164,7 +170,7 @@ h4{
 
 
 .c td{
-    height: 46px;
+    height:46px;
 }
 
 table{
@@ -175,6 +181,15 @@ table{
 margin-top: 30px;
     width: 100%;
 }
+
+
+#snt{
+
+    width: 10px;
+
+}
+
+
 
 
     </style>
@@ -231,7 +246,7 @@ excel_file.addEventListener('change', (event) => {
 
         if(sheet_data.length > 0)
         {
-            var table_output = '<div class="logos"><div class="logo" id="im1"><img src="UK-AID-Standard-RGB.jpg" alt=""></div><div class="logo" id="im2"><img src="Dutch MFA logo.jpg" alt=""></div><div class="logo" id="im3"><img src="Start_Fund_Bangladesh_blue-on-white.png" alt="Start_Fund_Bangladesh_blue-on-white.png"></div><div class="logo" id="im4"><img src="big-logo1.jpg" alt=""></div></div><h4>ALERT B042 Bangladesh (Flash Flooding in North East Part of Bangladesh)</h4><table><tr class="c"><td colspan="13">NGOAB Ref. No. 03.07.2666.665.68.236.21-1236</td><td colspan="4">Date</td><td></td></tr><tr class="c"><td colspan="2">ইউনিয়ন</td><td colspan="2"></td><td colspan="">উপজেলা</td><td colspan="5"></td><td colspan="2">জেলা</td><td colspan="4">সিলেট</td><td>বিভাগ</td><td>সিলেট</td></tr><tr class="c"><td colspan="2">Union</td><td colspan="2"></td><td colspan="">Upazila</td><td colspan="5"></td><td colspan="2">District</td><td colspan="4">Sylhet</td><td>Division</td><td>Sylhet</td></tr><tr class="b"><td id="sl">সিরিয়াল<br>নম্বর</td><td>অংশগ্রহনকারীর<br>নম্বর</td><td>অংশগ্রহনকারীর<br>নাম</td><td>পিতা / স্বামীর<br>নাম</td><td id="vl">গ্রাম</td><td id="wd">ওয়ার্ড</td><td>মোবাইল নম্বর</td><td>জাতীয় পরিচয়পত্র /<br><br>জন্ম সনদ নম্বর</td><td class="rt" rowspan="2" >Cash<br>Amount</></td><td class="rt" rowspan="2">Bahting<br>Soap 125 gm </td><td class="rt" rowspan="2">Laundry<br>Soap 130 gm</td><td class="rt" rowspan="2">Sanitary<br>Napkin  (1 packet = 8 pcs.)</td><td class="rt" rowspan="2">Bucket with<br>Lid and Tap (20 litres)</td><td class="rt" rowspan="2">Disposable<br>Surgical Mask </td><td class="rt" rowspan="2">Plastic Mug<br>(1.5 Litre) </td><td class="rt" rowspan="2">One pager<br>IEC </td><td class="rt">জনসংখ্যা</td><td rowspan="2" id="sn">Signature</td></tr><tr class="b"><td>Sl.<br>No.</td><td>Participant<br>Number</td><td>Project Participants <br>Name</td><td>Father / Husband<br>Name</td><td>Village</td><td>Ward</td><td>Mobile No.</td><td>National ID / <br>Birth Certificate No.<br><td class="rt">HH<br>Population </td></tr><tr class="b"><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td></tr> ';
+            var table_output = '<div class="logos"><div class="logo" id="im1"><img src="UK-AID-Standard-RGB.jpg" alt=""></div><div class="logo" id="im2"><img src="Dutch MFA logo.jpg" alt=""></div><div class="logo" id="im3"><img src="Start_Fund_Bangladesh_blue-on-white.png" alt="Start_Fund_Bangladesh_blue-on-white.png"></div><div class="logo" id="im4"><img src="big-logo1.jpg" alt=""></div></div><h4>ALERT B042 Bangladesh (Flash Flooding in North East Part of Bangladesh)</h4><table><tr class="c"><td colspan="13">NGOAB Ref. No. 03.07.2666.665.68.236.21-1236</td><td colspan="4">Date</td><td></td></tr><tr class="c"><td colspan="2">ইউনিয়ন</td><td colspan="2"></td><td colspan="">উপজেলা</td><td colspan="5"></td><td colspan="2">জেলা</td><td colspan="4">সিলেট</td><td>বিভাগ</td><td>সিলেট</td></tr><tr class="c"><td colspan="2">Union</td><td colspan="2"></td><td colspan="">Upazila</td><td colspan="5"></td><td colspan="2">District</td><td colspan="4">Sylhet</td><td>Division</td><td>Sylhet</td></tr><tr class="b"><td id="sl">সিরিয়াল<br>নম্বর</td><td>অংশগ্রহনকারীর<br>নম্বর</td><td>অংশগ্রহনকারীর<br>নাম</td><td>পিতা / স্বামীর<br>নাম</td><td id="vl">গ্রাম</td><td id="wd">ওয়ার্ড</td><td>মোবাইল নম্বর</td><td>জাতীয় পরিচয়পত্র /<br><br>জন্ম সনদ নম্বর</td><td class="rt" rowspan="2" >Cash<br>Amount</></td><td class="rt" rowspan="2">Bahting<br>Soap <br>125 gm </td><td class="rt" rowspan="2">Laundry<br>Soap<br>130 gm</td><td class="rt" rowspan="2" id="snt">Sanitary<br>Napkin<br>(1 packet <br>= 8 pcs.)</td><td class="rt" rowspan="2">Bucket<br>with<br>Lid and<br>Tap (20 <br> litres)</td><td class="rt" rowspan="2">Dispo-<br>sable<br>Surgical<br>Mask </td><td class="rt" rowspan="2">Plastic<br>Mug<br>(1.5 Litre) </td><td class="rt" rowspan="2">One<br>pager<br>IEC </td><td class="rt">জনসংখ্যা</td><td rowspan="2" id="sn">Signature</td></tr><tr class="b"><td>Sl.<br>No.</td><td>Participant<br>Number</td><td>Project Participants <br>Name</td><td>Father / Husband<br>Name</td><td>Village</td><td>Ward</td><td>Mobile No.</td><td>National ID / <br>Birth Certificate No.<br><td class="rt">HH<br>Population </td></tr><tr class="b"><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td></tr> ';
 
             for(var row = 1; row < sheet_data.length; row++)
             {
@@ -239,23 +254,23 @@ excel_file.addEventListener('change', (event) => {
 
                 if((row-1)%8==0 && (row-1)!=0){
                    
-                    table_output += '</table><br><table class="break c" > <tr> <td id="up"></td><td></td><td></td><td></td></tr><tr class="b"><td>UP Representative</td><td>Committee Member 1 (Programme)</td><td>Committee Member 2 (HA&CE Officer)</td><td>Committee Member 3 (Finance)</td></tr></table>';
+                    table_output += '</table><table class="break c" > <tr> <td id="up"></td><td></td><td></td><td></td></tr><tr class="b"><td>UP Representative</td><td>Committee Member 1 (Programme)</td><td>Committee Member 2 (HA&CE Officer)</td><td>Committee Member 3 (Finance)</td></tr></table>';
 
-                    table_output += '<div class="logos"><div class="logo" id="im1"><img src="UK-AID-Standard-RGB.jpg" alt=""></div><div class="logo" id="im2"><img src="Dutch MFA logo.jpg" alt=""></div><div class="logo" id="im3"><img src="Start_Fund_Bangladesh_blue-on-white.png" alt="Start_Fund_Bangladesh_blue-on-white.png"></div><div class="logo" id="im4"><img src="big-logo1.jpg" alt=""></div></div><h4>ALERT B042 Bangladesh (Flash Flooding in North East Part of Bangladesh)</h4><table><tr><td colspan="13">NGOAB Ref. No. 03.07.2666.665.68.236.21-1236</td><td colspan="4">Date</td><td></td></tr><tr><td colspan="2">ইউনিয়ন</td><td colspan="2"></td><td colspan="">উপজেলা</td><td colspan="5"></td><td colspan="2">জেলা</td><td colspan="4">সিলেট</td><td>বিভাগ</td><td>সিলেট</td></tr><tr><td colspan="2">Union</td><td colspan="2"></td><td colspan="">Upazila</td><td colspan="5"></td><td colspan="2">District</td><td colspan="4">Sylhet</td><td>Division</td><td>Sylhet</td></tr><tr class="b"><td id="sl">সিরিয়াল<br>নম্বর</td><td>অংশগ্রহনকারীর<br>নম্বর</td><td>অংশগ্রহনকারীর<br>নাম</td><td>পিতা / স্বামীর<br>নাম</td><td id="vl">গ্রাম</td><td id="wd">ওয়ার্ড</td><td>মোবাইল নম্বর</td><td>জাতীয় পরিচয়পত্র /<br><br>জন্ম সনদ নম্বর</td><td class="rt" rowspan="2" >Cash<br>Amount</></td><td class="rt" rowspan="2">Bahting<br>Soap 125 gm </td><td class="rt" rowspan="2">Laundry<br>Soap 130 gm</td><td class="rt" rowspan="2">Sanitary<br>Napkin  (1 packet = 8 pcs.)</td><td class="rt" rowspan="2">Bucket with<br>Lid and Tap (20 litres)</td><td class="rt" rowspan="2">Disposable<br>Surgical Mask </td><td class="rt" rowspan="2">Plastic Mug<br>(1.5 Litre) </td><td class="rt" rowspan="2">One pager<br>IEC </td><td class="rt">জনসংখ্যা</td><td rowspan="2" id="sn">Signature</td></tr><tr class="b"><td>Sl.<br>No.</td><td>Participant<br>Number</td><td>Project Participants <br>Name</td><td>Father / Husband<br>Name</td><td>Village</td><td>Ward</td><td>Mobile No.</td><td>National ID / <br>Birth Certificate No.<br><td class="rt">HH<br>Population </td></tr><tr class="b"><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td></tr>';
+                    table_output += '<div class="logos"><div class="logo" id="im1"><img src="UK-AID-Standard-RGB.jpg" alt=""></div><div class="logo" id="im2"><img src="Dutch MFA logo.jpg" alt=""></div><div class="logo" id="im3"><img src="Start_Fund_Bangladesh_blue-on-white.png" alt="Start_Fund_Bangladesh_blue-on-white.png"></div><div class="logo" id="im4"><img src="big-logo1.jpg" alt=""></div></div><h4>ALERT B042 Bangladesh (Flash Flooding in North East Part of Bangladesh)</h4><table ><tr class="c"><td colspan="13">NGOAB Ref. No. 03.07.2666.665.68.236.21-1236</td><td colspan="4">Date</td><td></td></tr><tr class="c"><td colspan="2">ইউনিয়ন</td><td colspan="2"></td><td colspan="">উপজেলা</td><td colspan="5"></td><td colspan="2">জেলা</td><td colspan="4">সিলেট</td><td>বিভাগ</td><td>সিলেট</td></tr><tr class="c"><td colspan="2">Union</td><td colspan="2"></td><td colspan="">Upazila</td><td colspan="5"></td><td colspan="2">District</td><td colspan="4">Sylhet</td><td>Division</td><td>Sylhet</td></tr><tr class="b"><td id="sl">সিরিয়াল<br>নম্বর</td><td>অংশগ্রহনকারীর<br>নম্বর</td><td>অংশগ্রহনকারীর<br>নাম</td><td>পিতা / স্বামীর<br>নাম</td><td id="vl">গ্রাম</td><td id="wd">ওয়ার্ড</td><td>মোবাইল নম্বর</td><td>জাতীয় পরিচয়পত্র /<br><br>জন্ম সনদ নম্বর</td><td class="rt" rowspan="2" >Cash<br>Amount</></td><td class="rt" rowspan="2">Bahting<br>Soap <br>125 gm </td><td class="rt" rowspan="2">Laundry<br>Soap<br>130 gm</td><td class="rt" rowspan="2" id="snt">Sanitary<br>Napkin<br>(1 packet <br>= 8 pcs.)</td><td class="rt" rowspan="2">Bucket<br>with<br>Lid and<br>Tap (20 <br> litres)</td><td class="rt" rowspan="2">Dispo-<br>sable<br>Surgical<br>Mask </td><td class="rt" rowspan="2">Plastic<br>Mug<br>(1.5 Litre) </td><td class="rt" rowspan="2">One<br>pager<br>IEC </td><td class="rt">জনসংখ্যা</td><td rowspan="2" id="sn">Signature</td></tr><tr class="b"><td>Sl.<br>No.</td><td>Participant<br>Number</td><td>Project Participants <br>Name</td><td>Father / Husband<br>Name</td><td>Village</td><td>Ward</td><td>Mobile No.</td><td>National ID / <br>Birth Certificate No.<br><td class="rt">HH<br>Population </td></tr><tr class="b"><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td></tr>';
 
-                    table_output+='<tr class="c"><td>1</td><td>2</td><td>'+sheet_data[row][17]+'</td><td>'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td><td>4500</td><td>10</td><td>10</td><td>8</td><td>1</td><td>50</td><td>1</td><td>1</td><td></td><td rowspan="2"></td></tr><tr class="c"><td>1</td><td>2</td><td>'+sheet_data[row][17]+'</td><td>'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td><td>৪৫০০</td><td>১০</td><td>১০</td><td>৮</td><td>১</td><td>৫০</td><td>১০</td><td>১০</td><td></td></tr>';
+                    table_output+='<tr class="c"><td>1</td><td>2</td><td id="name">'+sheet_data[row][17]+'</td><td>'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td><td>4500</td><td>10</td><td>10</td><td>8</td><td>1</td><td>50</td><td>1</td><td>1</td><td></td><td rowspan="2"></td></tr><tr class="c"><td>1</td><td>2</td><td id="name">'+sheet_data[row][17]+'</td><td>'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td><td>৪৫০০</td><td>১০</td><td>১০</td><td>৮</td><td>১</td><td>৫০</td><td>১০</td><td>১০</td><td></td></tr>';
 
                 }
 
                 else{
-                    table_output+='<tr class="c"><td>1</td><td>2</td><td>'+sheet_data[row][17]+'</td><td>'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td><td>4500</td><td>10</td><td>10</td><td>8</td><td>1</td><td>50</td><td>1</td><td>1</td><td></td><td rowspan="2"></td></tr><tr class="c"><td>1</td><td>2</td><td>'+sheet_data[row][17]+'</td><td>'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td><td>৪৫০০</td><td>১০</td><td>১০</td><td>৮</td><td>১</td><td>৫০</td><td>১০</td><td>১০</td><td></td></tr>';
+                    table_output+='<tr class="c"><td>1</td><td>2</td><td id="name">'+sheet_data[row][17]+'</td><td>'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td><td>4500</td><td>10</td><td>10</td><td>8</td><td>1</td><td>50</td><td>1</td><td>1</td><td></td><td rowspan="2"></td></tr><tr class="c"><td>1</td><td>2</td><td id="name">'+sheet_data[row][17]+'</td><td>'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td><td>৪৫০০</td><td>১০</td><td>১০</td><td>৮</td><td>১</td><td>৫০</td><td>১০</td><td>১০</td><td></td></tr>';
 
                 }
 
 
             }
 
-            table_output += '</table><br><table class="break"><tr> <td id="up"></td><td></td><td></td><td></td></tr><tr class="b c"><td>UP Representative</td><td>Committee Member 1 (Programme)</td><td>Committee Member 2 (HA&CE Officer)</td><td>Committee Member 3 (Finance)</td></tr></table>';
+            table_output += '</table><table class="break"><tr> <td id="up"></td><td></td><td></td><td></td></tr><tr class="b c"><td>UP Representative</td><td>Committee Member 1 (Programme)</td><td>Committee Member 2 (HA&CE Officer)</td><td>Committee Member 3 (Finance)</td></tr></table>';
 
             document.getElementById('excel_data').innerHTML = table_output;
         }

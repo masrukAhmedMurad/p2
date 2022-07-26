@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Review an Excel File</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+
+    <style>
+        
+
+        table{
+      
+          width: 98%;
+         
+          margin: 30px auto;
+          
+        }
+
+        td{
+            font-size: 12px;
+            padding-left: 1px;
+            padding-right: 1px;
+            text-align: center;
+        }
+
+
+        .logos{
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            justify-content: space-between;
+            margin-bottom: 20px;
+           
+         
+            
+        }
+
+
+
+
+#im1 img{
+    width: 160px;
+    height: 148px;
+
+    margin-right: 15px;
+
+}
+
+#im2 img{
+    width: 190px;
+    height: 115px;
+    margin-right: 15px;
+
+
+
+}
+
+#im3 img{
+    width: 165px;
+    height: 125px;
+    margin-right: 15px;
+
+
+
+}
+
+#im4 img{
+    width: 170px;
+    height: 157px;
+    margin-right: 12px;
+
+
+}
+
+
+
+
+table{
+    border-collapse: collapse;
+    margin-top: 30px;
+    
+}
+
+
+
+        table,td{
+            border: 1px solid black;
+            
+        }
+
+
+       
+
+.rt{
+    writing-mode:vertical-rl;
+    text-align: center;
+   
+}
+       
+
+#sl{
+    width: 10px;
+}
+
+
+
+#sn{
+    
+    padding: 0 15px;
+}
+
+#up{
+    height: 60px;
+}
+
+
+
+#st{
+
+
+    margin-top: 20px;
+    width: 500px;
+    
+
+}
+
+#st td{
+    width: 25%;
+}
+
+.b td{
+    font-weight: 700;
+}
+
+
+h4{
+    text-align: center;
+    margin: 40px 20px;
+    
+}
+
+
+      
+   @media print 
+        {
+            #head
+            
+            {
+                 display: none !important;
+            }
+
+
+        
+                .break  {page-break-after: always; }
+             
+
+
+
+        }
+
+
+.c td{
+    height: 46px;
+}
+
+table{
+    margin-bottom: 40px !important;
+}
+
+#st{
+margin-top: 30px;
+    width: 100%;
+}
+
+
+#name, #uid, #fn{
+
+    font-size: 14px;
+    font-weight: 500;
+
+}
+
+
+    </style>
+
+
+</head>
+<body class="">
+    <div class="container" id="head">
+    	<h2 class="text-center mt-4 mb-4 text-white">Creating Master Roll From Excel File</h2>
+    	<div class="card">
+    		<div class="card-header bg-primary text-white"><b>Select Excel File</b></div>
+    		<div class="card-body bg-warning">
+    			
+                <input type="file" id="excel_file" />
+
+    		</div>
+            <div class="card-header bg-primary text-white"><b>Use scrollbar for large file...</b></div>
+
+    	</div>
+       
+    </div>
+    <div id="excel_data" class=""></div>
+</body>
+</html>
+
+<script>
+
+const excel_file = document.getElementById('excel_file');
+
+excel_file.addEventListener('change', (event) => {
+
+    if(!['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].includes(event.target.files[0].type))
+    {
+        document.getElementById('excel_data').innerHTML = '<div class="alert alert-danger">Only .xlsx or .xls file format are allowed</div>';
+
+        excel_file.value = '';
+
+        return false;
+    }
+
+    var reader = new FileReader();
+
+    reader.readAsArrayBuffer(event.target.files[0]);
+
+    reader.onload = function(event){
+
+        var data = new Uint8Array(reader.result);
+
+        var work_book = XLSX.read(data, {type:'array'});
+
+        var sheet_name = work_book.SheetNames;
+
+        var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
+
+        if(sheet_data.length > 0)
+        {
+            var table_output = '<div class="logos"><div class="logo" id="im1"><img src="UK-AID-Standard-RGB.jpg" alt=""></div><div class="logo" id="im2"><img src="Dutch MFA logo.jpg" alt=""></div><div class="logo" id="im3"><img src="Start_Fund_Bangladesh_blue-on-white.png" alt="Start_Fund_Bangladesh_blue-on-white.png"></div><div class="logo" id="im4"><img src="big-logo1.jpg" alt=""></div></div><h4>ALERT B042 Bangladesh (Flash Flooding in North East Part of Bangladesh)</h4><table><tr class="c"><td colspan="6">NGOAB Ref. No. 03.07.2666.665.68.236.21-1236</td><td colspan="">Date</td><td></td></tr><tr class="c"><td >ইউনিয়ন</td><td ></td><td colspan="">উপজেলা</td><td></td><td colspan="">জেলা</td><td >সিলেট</td><td>বিভাগ</td><td>সিলেট</td></tr><tr class="c"><td colspan="">Union</td><td colspan=""></td><td colspan="">Upazila</td><td colspan=""></td><td colspan="">District</td><td colspan="">Sylhet</td><td>Division</td><td>Sylhet</td></tr><tr class="b"><td id="sl">সিরিয়াল<br>নম্বর</td><td id="uid">অংশগ্রহনকারীর<br>নম্বর</td><td id="name">অংশগ্রহনকারীর<br>নাম</td><td>পিতা / স্বামীর<br>নাম</td><td id="vl">গ্রাম</td><td id="wd">ওয়ার্ড</td><td>মোবাইল নম্বর</td><td>জাতীয় পরিচয়পত্র /<br><br>জন্ম সনদ নম্বর</td></tr><tr class="b"><td>Sl.<br>No.</td><td>Participant<br>Number</td><td>Project Participants <br>Name</td><td>Father / Husband<br>Name</td><td>Village</td><td>Ward</td><td>Mobile No.</td><td>National ID / <br>Birth Certificate No.<br></td></tr><tr class="b"><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr> ';
+
+            for(var row = 1; row < sheet_data.length; row++)
+            {
+
+
+                if((row-1)%8==0 && (row-1)!=0){
+                   
+                    table_output += '</table><br><table class="break c" > <tr> <td id="up"></td><td></td><td></td><td></td></tr><tr class="b"><td>UP Representative</td><td>Committee Member 1 (Programme)</td><td>Committee Member 2 (HA&CE Officer)</td><td>Committee Member 3 (Finance)</td></tr></table>';
+
+                    table_output += '<div class="logos"><div class="logo" id="im1"><img src="UK-AID-Standard-RGB.jpg" alt=""></div><div class="logo" id="im2"><img src="Dutch MFA logo.jpg" alt=""></div><div class="logo" id="im3"><img src="Start_Fund_Bangladesh_blue-on-white.png" alt="Start_Fund_Bangladesh_blue-on-white.png"></div><div class="logo" id="im4"><img src="big-logo1.jpg" alt=""></div></div><h4>ALERT B042 Bangladesh (Flash Flooding in North East Part of Bangladesh)</h4><table class=""><tr class="c"><td colspan="6">NGOAB Ref. No. 03.07.2666.665.68.236.21-1236</td><td colspan="">Date</td><td></td></tr><tr class="c"><td colspan="">ইউনিয়ন</td><td colspan=""></td><td colspan="">উপজেলা</td><td colspan=""></td><td colspan="">জেলা</td><td colspan="">সিলেট</td><td>বিভাগ</td><td>সিলেট</td></tr><tr class="c"><td colspan="">Union</td><td colspan=""></td><td colspan="">Upazila</td><td colspan=""></td><td colspan="">District</td><td colspan="">Sylhet</td><td>Division</td><td>Sylhet</td></tr><tr class="b"><td id="sl">সিরিয়াল<br>নম্বর</td><td >অংশগ্রহনকারীর<br>নম্বর</td><td id="name">অংশগ্রহনকারীর<br>নাম</td><td>পিতা / স্বামীর<br>নাম</td><td id="vl">গ্রাম</td><td id="wd">ওয়ার্ড</td><td>মোবাইল নম্বর</td><td>জাতীয় পরিচয়পত্র /<br><br>জন্ম সনদ নম্বর</td></tr><tr class="b"><td>Sl.<br>No.</td><td>Participant<br>Number</td><td>Project Participants <br>Name</td><td>Father / Husband<br>Name</td><td>Village</td><td>Ward</td><td>Mobile No.</td><td>National ID / <br>Birth Certificate No.<br></td></tr><tr class="b"><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>';
+
+                    table_output+='<tr class="c"><td>1</td><td id="uid">2</td><td id="name">'+sheet_data[row][17]+'</td><td id="fn">'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</tr><tr class="c"><td>1</td><td id="uid">2</td><td id="name">'+sheet_data[row][17]+'</td><td id="fn">'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td></tr>';
+
+                }
+
+                else{
+                    table_output+='<tr class="c"><td>1</td><td id="uid">2</td><td id="name">'+sheet_data[row][17]+'</td><td id="fn">'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td></tr><tr class="c"><td>1</td><td id="uid">2</td><td id="name">'+sheet_data[row][17]+'</td><td id="fn">'+sheet_data[row][21]+'</td><td>'+sheet_data[row][16]+'</td><td>'+sheet_data[row][15]+'</td><td>'+sheet_data[row][23]+'</td><td>'+sheet_data[row][20]+'</td></tr>';
+
+                }
+
+
+            }
+
+            table_output += '</table><br><table class="break"><tr> <td id="up"></td><td></td><td></td><td></td></tr><tr class="b c"><td>UP Representative</td><td>Committee Member 1 (Programme)</td><td>Committee Member 2 (HA&CE Officer)</td><td>Committee Member 3 (Finance)</td></tr></table>';
+
+            document.getElementById('excel_data').innerHTML = table_output;
+        }
+
+        excel_file.value = '';
+
+    }
+
+});
+
+</script>
